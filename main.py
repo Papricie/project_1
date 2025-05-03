@@ -83,12 +83,13 @@ cara = "-" * 35
 
 text_cislo = int(input("Vyber číslo textu mezi 1 a 3: "))
 
+print(cara)
+
 if 1 <= text_cislo <= 3:
     text_vypis = TEXTS[text_cislo -1]
-    print("Analyzovaný text: " 
-          + text_vypis)
+    print("Vybrali jste tento text:\n"+ text_vypis)
 else:
-    print("Text číslo " + str(text_cislo) + " není k dispozici, ukončuji program")
+    print("Číslo " + str(text_cislo) + " není mezi čísly 1 a 3, ukončuji program")
     quit()
 
 print(cara)

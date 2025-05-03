@@ -81,6 +81,11 @@ cara = "-" * 35
 
 # KÓD
 
+# Ověření uživatelského jména a hesla
+prihlaseni = input("Zadej uživatelské jméno a heslo:")
+
+
+# Výběr textu k analýze
 text_cislo = int(input("Vyber číslo textu mezi 1 a 3: "))
 
 print(cara)

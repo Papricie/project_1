@@ -6,6 +6,7 @@ author: Patricie Hermanová
 email: patriciehermanova@gmail.com
 """
 
+
 # ZADÁNÍ PROJEKTU
 
 # Analyzované texty
@@ -39,7 +40,7 @@ TEXTS = [
     '''
 ]
 
-# Registrovaní uživatelé
+# Registrovaní uživatelé - vytvořit si slovník
 """
 +------+-------------+
 | user |   password  |
@@ -51,17 +52,15 @@ TEXTS = [
 +------+-------------+
 """
 
-registrovani_uzivatele = {
-    "bob": {"123"},
-    "ann": {"pass123"},
-    "mike": {"password123"},
-    "liz": {"pass123"}
-}
-
 # Oddělovač
-cara = "-" * 50
+oddelovac = "-" * 50
 
-# TODO
+# UŽIVATELSKÝ VSTUP
+# uživatel se přihlásí jménem a heslem
+# vybere číslo mezi 1 a 3, pokud vybere číslo, které není v zadání, program jej upozorní a skončí
+# pokud uživatel zadá jiný vstup než číslo, program jej rovněž upozorní a skončí
+
+# ANALÝZA:
 # počet slov
 # počet slov začínajících velkým písmenem
 # počet slov psaných velkými písmeny
@@ -69,11 +68,8 @@ cara = "-" * 50
 # počet čísel (ne cifer)
 # sumu všech čísel (ne cifer) v textu
 
-# pokud uživatel vybere takové číslo textu, které není v zadání, program jej upozorní a skončí
-# pokud uživatel zadá jiný vstup než číslo, program jej rovněž upozorní a skončí
-
-# výstupem bude jednoduchý sloupcový graf, který bude reprezentovat četnost různých délek slov v textu 
-# například takto:
+# VÝSTUP
+# sloupcový graf, který bude reprezentovat četnost různých délek slov v textu, např:
 
 # 7| * 1
 # 8| *********** 11
@@ -81,33 +77,46 @@ cara = "-" * 50
 #10| ********* 9
 #11| ********** 10
 
-# KÓD
 
-# Ověření uživatelského jména a hesla
-uzivatel = input("Zadej uživatelské jméno a heslo:")
+################ KÓD ################
 
-if not uzivatel in registrovani_uzivatele:
-    print("Neregistrovaný uživatel! Ukončuji progam")
-    quit()
+# Slovník se jmény a hesly
+registrovani_uzivatele = {
+    "bob": "123",
+    "ann": "pass123",
+    "mike": "password123",
+    "liz": "pass123"
+}
+
+# Zadaní jména a hesla
+zadane_jmeno = input("Zadej uživatelské jméno: ")
+zadane_heslo = input("Zadej heslo: ")
+
+print(oddelovac)
+
+# Ověření pomocí if else
+if zadane_jmeno in registrovani_uzivatele and registrovani_uzivatele[zadane_jmeno] == zadane_heslo:
+    print("Vítej v mém analyzátoru textu,", zadane_jmeno + "!")
 else:
-    print("V pořádku", cara, sep="\n")
-    print("Vítejte v analyzátoru textu!",
-          cara, sep="\n")
+    print("Neregistrovaný uživatel, ukončuji program.")
+    quit()
 
+print(oddelovac)
 
 # Výběr textu k analýze
-text_cislo = int(input("Vyber číslo textu mezi 1 a 3: "))
+text_cislo = int(input("Teď vyber číslo textu mezi 1 a 3: "))
 
-print(cara)
+print(oddelovac)
 
 if 1 <= text_cislo <= 3:
     text_vypis = TEXTS[text_cislo -1]
-    print("Vybral jsi tento text:\n"+ text_vypis)
+    print("Vybral jsi tento text:\n"
+          + text_vypis)
 else:
-    print("Číslo " + str(text_cislo) + " není mezi čísly 1 a 3, ukončuji program")
+    print("Číslo " + str(text_cislo) + " rozhodně není mezi čísly 1 a 3, ukončuji program")
     quit()
 
-print(cara)
+print(oddelovac)
 
 
 

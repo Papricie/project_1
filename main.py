@@ -51,13 +51,15 @@ TEXTS = [
 +------+-------------+
 """
 
-bob = "123"
-ann = "pass123"
-mike = "password123"
-liz = "pass123"
+registrovani_uzivatele = {
+    "bob": {"123"},
+    "ann": {"pass123"},
+    "mike": {"password123"},
+    "liz": {"pass123"}
+}
 
-# Jiné
-cara = "-" * 35
+# Oddělovač
+cara = "-" * 50
 
 # TODO
 # počet slov
@@ -82,7 +84,15 @@ cara = "-" * 35
 # KÓD
 
 # Ověření uživatelského jména a hesla
-prihlaseni = input("Zadej uživatelské jméno a heslo:")
+uzivatel = input("Zadej uživatelské jméno a heslo:")
+
+if not uzivatel in registrovani_uzivatele:
+    print("Neregistrovaný uživatel! Ukončuji progam")
+    quit()
+else:
+    print("V pořádku", cara, sep="\n")
+    print("Vítejte v analyzátoru textu!",
+          cara, sep="\n")
 
 
 # Výběr textu k analýze
@@ -92,7 +102,7 @@ print(cara)
 
 if 1 <= text_cislo <= 3:
     text_vypis = TEXTS[text_cislo -1]
-    print("Vybrali jste tento text:\n"+ text_vypis)
+    print("Vybral jsi tento text:\n"+ text_vypis)
 else:
     print("Číslo " + str(text_cislo) + " není mezi čísly 1 a 3, ukončuji program")
     quit()

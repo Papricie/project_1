@@ -56,9 +56,9 @@ TEXTS = [
 oddelovac = "-" * 50
 
 # UŽIVATELSKÝ VSTUP
-# uživatel se přihlásí jménem a heslem
-# vybere číslo mezi 1 a 3, pokud vybere číslo, které není v zadání, program jej upozorní a skončí
-# pokud uživatel zadá jiný vstup než číslo, program jej rovněž upozorní a skončí
+# A/ uživatel se přihlásí jménem a heslem
+# B/ vybere číslo mezi 1 a 3, pokud vybere číslo, které NENÍ V ZADÁNÍ, program jej upozorní a skončí
+# C/ pokud uživatel zadá JINÝ vstup NEŽ ČÍSLO, program jej rovněž upozorní a skončí
 
 # ANALÝZA:
 # počet slov
@@ -103,21 +103,23 @@ else:
 
 print(oddelovac)
 
-# Výběr textu k analýze
-text_cislo = int(input("Teď vyber číslo textu mezi 1 a 3: "))
+# Výběr textu k analýze, musí být mezi 1 a 3 a musí to být integer
 
-print(oddelovac)
-
-if 1 <= text_cislo <= 3:
-    text_vypis = TEXTS[text_cislo -1]
-    print("Vybral jsi tento text:\n"
+text_cislo = input("Teď vyber číslo textu mezi 1 a 3: ")
+if text_cislo.isdigit():
+    text_cislo = int(text_cislo)
+    if 1 <= text_cislo <= 3:
+        text_vypis = TEXTS[text_cislo -1]
+        print("Vybral jsi tento text:\n"
           + text_vypis)
+    else:
+        print("Toto číslo rozhodně není mezi 1 a 3, ukončuji program")
+    quit()
 else:
-    print("Číslo " + str(text_cislo) + " rozhodně není mezi čísly 1 a 3, ukončuji program")
+    print(str(text_cislo) + " rozhodně není číslo, ukončuji program")
     quit()
 
 print(oddelovac)
-
 
 
 

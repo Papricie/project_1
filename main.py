@@ -19,16 +19,20 @@ TEXTS = [
     to an elevation of more than 7500 feet
     above sea level. The butte is located just
     north of US 30 and the Union Pacific Railroad,
-    which traverse the valley.''',
-    '''At the base of Fossil Butte are the bright
+    which traverse the valley.
+    ''',
+    '''
+    At the base of Fossil Butte are the bright
     red, purple, yellow and gray beds of the Wasatch
     Formation. Eroded portions of these horizontal
     beds slope gradually upward from the valley floor
     and steepen abruptly. Overlying them and extending
     to the top of the butte are the much steeper
     buff-to-white beds of the Green River Formation,
-    which are about 300 feet thick.''',
-    '''The monument contains 8198 acres and protects
+    which are about 300 feet thick.
+    ''',
+    '''
+    The monument contains 8198 acres and protects
     a portion of the largest deposit of freshwater fish
     fossils in the world. The richest fossil fish deposits
     are found in multiple limestone layers, which lie some
@@ -104,24 +108,37 @@ else:
 print(oddelovac)
 
 # Výběr textu k analýze, musí být mezi 1 a 3 a musí to být integer
-
 text_cislo = input("Teď vyber číslo textu mezi 1 a 3: ")
 if text_cislo.isdigit():
     text_cislo = int(text_cislo)
     if 1 <= text_cislo <= 3:
         text_vypis = TEXTS[text_cislo -1]
-        print("Vybral jsi tento text:\n"
-          + text_vypis)
+        print(oddelovac)
+        print("Vybraný text:\n"+ text_vypis)
+        print(oddelovac)
+# Analýza textu
+        pocet_slov = len(TEXTS[text_cislo -1])
+        zacinajici_velkym = sum(1 for slovo in (TEXTS[text_cislo -1]) if slovo[0].isupper())
+        psano_velkymi = sum(1 for slovo in (TEXTS[text_cislo -1]) if slovo.isupper() and slovo.isalpha())
+        psano_malymi = sum(1 for slovo in (TEXTS[text_cislo -1]) if slovo.islower())
+        cisla = [int(slovo) for slovo in (TEXTS[text_cislo -1]) if slovo.isdigit()]
+        pocet_cisel = len(cisla)
+        suma_cisel = sum(cisla)
+# Výsledky slovně
+        print("Analýza textu:\n")
+        print(f"Počet slov: {pocet_slov}")
+        print(f"Začínající velkým písmenem: {zacinajici_velkym}")
+        print(f"Psáno velkými písmeny: {psano_velkymi}")
+        print(f"Psáno malými písmeny: {psano_malymi}")
+        print(f"Počet čísel: {pocet_cisel}")
+        print(f"Suma všech čísel: {suma_cisel}")
+        
     else:
         print("Toto číslo rozhodně není mezi 1 a 3, ukončuji program")
-    quit()
+        quit()
 else:
     print(str(text_cislo) + " rozhodně není číslo, ukončuji program")
     quit()
 
 print(oddelovac)
-
-
-
-
-
+    

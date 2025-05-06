@@ -127,6 +127,7 @@ if text_cislo.isdigit():
 
         print(oddelovac)
 
+
  # Analýza textu       
         pocet_slov = [slovo.strip(",.()") 
                       for slovo in TEXTS[text_cislo -1].split() 
@@ -159,6 +160,7 @@ if text_cislo.isdigit():
         for slovo in TEXTS[text_cislo -1].split():
             if slovo.isdigit():
                 suma_cisel += int(slovo)
+
 # Výsledky
         print("Analýza textu:\n")
         print("Počet slov v textu:", len(pocet_slov))
@@ -195,7 +197,15 @@ delky_pocet = dict(sorted(delky_pocet.items()))
 
 # Výpis hvězdičkového grafu pro délky slov
 print("Hvězdičkový graf pro délky a výskyt slov:\n")
-print("| Délka?  | Výskyt? |\n")
+print("| Délka  | Výskyt |\n")
 for delka, vyskyt in delky_pocet.items():
     print(f"| {delka} znaků |{'*' * vyskyt} | {vyskyt}x |")
+
+print(oddelovac)
+
+
+print("Děkuji za využití mého analyzátoru, hezký den!")
+
+
+print(oddelovac)
     

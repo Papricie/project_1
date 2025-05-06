@@ -178,8 +178,9 @@ else:
 
 print(oddelovac)
 
+
 # Graf s délkou slov
-slova = [slovo.strip(",.()") for slovo in TEXTS[text_cislo -1].split() if slovo.strip(",.()")]
+slova = [slovo.strip(",.()") for slovo in TEXTS[text_cislo - 1].split() if slovo.strip(",.()")]
 
 delky_slov = [len(slovo) for slovo in slova]
 
@@ -190,9 +191,11 @@ for delka in delky_slov:
     else:
         delky_pocet[delka] = 1
 
+delky_pocet = dict(sorted(delky_pocet.items()))
+
 # Výpis hvězdičkového grafu pro délky slov
 print("Hvězdičkový graf pro délky a výskyt slov:\n")
-print("| Délka?  " "| Výskyt? |\n")
+print("| Délka?  | Výskyt? |\n")
 for delka, vyskyt in delky_pocet.items():
-    print(f"| {delka} znaků |{' *' * vyskyt} | {vyskyt}x |")
+    print(f"| {delka} znaků |{'*' * vyskyt} | {vyskyt}x |")
     

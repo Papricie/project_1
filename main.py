@@ -92,22 +92,26 @@ registrovani_uzivatele = {
     "liz": "pass123"
 }
 
-# Zadaní jména a hesla
+# Zadaní jména a hesla uživatelem
 zadane_jmeno = input("Zadej uživatelské jméno: ")
 zadane_heslo = input("Zadej heslo: ")
 
+
 print(oddelovac)
 
-# Ověření pomocí if else
+
+# Ověření uživatele
 if zadane_jmeno in registrovani_uzivatele and registrovani_uzivatele[zadane_jmeno] == zadane_heslo:
     print("Vítej v mém analyzátoru textu,", zadane_jmeno + "!")
 else:
     print("Neregistrovaný uživatel, ukončuji program.")
     quit()
 
+
 print(oddelovac)
 
-# Výběr textu k analýze, musí být mezi 1 a 3 a musí to být integer
+
+# Výběr textu
 text_cislo = input("Teď vyber číslo textu mezi 1 a 3: ")
 if text_cislo.isdigit():
     text_cislo = int(text_cislo)
@@ -115,24 +119,52 @@ if text_cislo.isdigit():
         text_vypis = TEXTS[text_cislo -1]
         print(oddelovac)
         print("Vybraný text:\n"+ text_vypis)
-        print(oddelovac)
-# Analýza textu
-        pocet_slov = len(TEXTS[text_cislo -1])
-        zacinajici_velkym = sum(1 for slovo in (TEXTS[text_cislo -1]) if slovo[0].isupper())
-        psano_velkymi = sum(1 for slovo in (TEXTS[text_cislo -1]) if slovo.isupper() and slovo.isalpha())
-        psano_malymi = sum(1 for slovo in (TEXTS[text_cislo -1]) if slovo.islower())
-        cisla = [int(slovo) for slovo in (TEXTS[text_cislo -1]) if slovo.isdigit()]
-        pocet_cisel = len(cisla)
-        suma_cisel = sum(cisla)
-# Výsledky slovně
-        print("Analýza textu:\n")
-        print(f"Počet slov: {pocet_slov}")
-        print(f"Začínající velkým písmenem: {zacinajici_velkym}")
-        print(f"Psáno velkými písmeny: {psano_velkymi}")
-        print(f"Psáno malými písmeny: {psano_malymi}")
-        print(f"Počet čísel: {pocet_cisel}")
-        print(f"Suma všech čísel: {suma_cisel}")
         
+
+        print(oddelovac)
+
+ # Analýza textu       
+
+        pocet_slov = [slovo.strip(",.()") 
+                      for slovo in TEXTS[text_cislo -1].split() 
+                      if slovo.strip(",.()")]
+        
+        psano_velkymi = []
+        for slovo in TEXTS[text_cislo -1].split():
+            ciste = slovo.strip(",.()")
+            if ciste.isupper():
+                psano_velkymi.append(ciste)
+        
+        zacinajici_velkym = []
+        for slovo in TEXTS[text_cislo -1].split():
+            ciste = slovo.strip(",.()")
+            if ciste[0].isupper() and ciste.isalpha():
+                zacinajici_velkym.append(ciste)
+        
+        psano_malymi = []
+        for slovo in TEXTS[text_cislo -1].split():
+            ciste = slovo.strip(",.()")
+            if ciste.islower():
+                psano_malymi.append(ciste)
+        
+        pocet_cisel = 0
+        for slovo in TEXTS[text_cislo -1].split():
+            if slovo.isdigit():
+                pocet_cisel += 1
+        
+        suma_cisel = 0
+        for slovo in TEXTS[text_cislo -1].split():
+            if slovo.isdigit():
+                suma_cisel += int(slovo)
+# Výsledky psané
+        print("Analýza textu:\n")
+        print("Počet slov v textu:", len(pocet_slov))
+        print("Počet slov začínající velkým písmenem:", len(zacinajici_velkym))
+        print("Počet slov psáno velkými písmeny: ", len(psano_velkymi))
+        print("Počet slov psáno malými písmeny: ", len(psano_malymi))
+        print(f"Počet čísel: {pocet_cisel}")
+        print(f"Suma všech čísel: {suma_cisel}")    
+    
     else:
         print("Toto číslo rozhodně není mezi 1 a 3, ukončuji program")
         quit()
@@ -140,5 +172,8 @@ else:
     print(str(text_cislo) + " rozhodně není číslo, ukončuji program")
     quit()
 
+
 print(oddelovac)
+
+# Výsledky graf
     

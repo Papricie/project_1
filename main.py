@@ -59,10 +59,13 @@ TEXTS = [
 # Oddělovač
 oddelovac = "-" * 50
 
+
 # UŽIVATELSKÝ VSTUP
 # A/ uživatel se přihlásí jménem a heslem
-# B/ vybere číslo mezi 1 a 3, pokud vybere číslo, které NENÍ V ZADÁNÍ, program jej upozorní a skončí
-# C/ pokud uživatel zadá JINÝ vstup NEŽ ČÍSLO, program jej rovněž upozorní a skončí
+# B/ vybere číslo mezi 1 a 3, pokud vybere číslo, které NENÍ V ZADÁNÍ, 
+#    program jej upozorní a skončí
+# C/ pokud uživatel zadá JINÝ vstup NEŽ ČÍSLO, 
+#    program jej rovněž upozorní a skončí
 
 # ANALÝZA:
 # počet slov
@@ -73,7 +76,8 @@ oddelovac = "-" * 50
 # sumu všech čísel (ne cifer) v textu
 
 # VÝSTUP
-# sloupcový graf, který bude reprezentovat četnost různých délek slov v textu, např:
+# A/ slovní analýza s výsledky
+# B/ sloupcový graf, který bude reprezentovat četnost různých délek slov, např:
 
 # 7| * 1
 # 8| *********** 11
@@ -82,7 +86,7 @@ oddelovac = "-" * 50
 #11| ********** 10
 
 
-################ KÓD ################
+###################################### KÓD ####################################
 
 # Slovník se jmény a hesly
 registrovani_uzivatele = {
@@ -98,10 +102,13 @@ zadane_heslo = input("Zadej heslo: ")
 
 
 print(oddelovac)
-
+#------------------------------------------------------------------------------
 
 # Ověření uživatele
-if zadane_jmeno in registrovani_uzivatele and registrovani_uzivatele[zadane_jmeno] == zadane_heslo:
+spravne_jmeno = zadane_jmeno in registrovani_uzivatele
+spravne_heslo = registrovani_uzivatele.get(zadane_jmeno) == zadane_heslo
+
+if spravne_jmeno and spravne_heslo:
     print("Vítej v mém analyzátoru textu,", zadane_jmeno + "!")
 else:
     print("Neregistrovaný uživatel, ukončuji program.")
@@ -109,6 +116,7 @@ else:
 
 
 print(oddelovac)
+#------------------------------------------------------------------------------
 
 
 # Výběr textu
@@ -126,7 +134,7 @@ if text_cislo.isdigit():
         
 
         print(oddelovac)
-
+#------------------------------------------------------------------------------
 
  # Analýza textu       
         pocet_slov = [slovo.strip(",.()") 
@@ -179,10 +187,12 @@ else:
 
 
 print(oddelovac)
+#------------------------------------------------------------------------------
 
 
 # Graf s délkou slov
-slova = [slovo.strip(",.()") for slovo in TEXTS[text_cislo - 1].split() if slovo.strip(",.()")]
+slova = [slovo.strip(",.()") for slovo in TEXTS[text_cislo - 1].split() 
+        if slovo.strip(",.()")]
 
 delky_slov = [len(slovo) for slovo in slova]
 
@@ -197,15 +207,17 @@ delky_pocet = dict(sorted(delky_pocet.items()))
 
 # Výpis hvězdičkového grafu pro délky slov
 print("Hvězdičkový graf pro délky a výskyt slov:\n")
-print("| Délka  | Výskyt |\n")
+print("|  Délka  |  Výskyt  |\n")
 for delka, vyskyt in delky_pocet.items():
     print(f"| {delka} znaků |{'*' * vyskyt} | {vyskyt}x |")
 
 print(oddelovac)
+#------------------------------------------------------------------------------
 
 
-print("Děkuji za využití mého analyzátoru, hezký den!")
+print("Díky za vyzkoušení mého analyzátoru,", zadane_jmeno + "!")
 
 
 print(oddelovac)
+#------------------------------------------------------------------------------
     

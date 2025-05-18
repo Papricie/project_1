@@ -124,13 +124,14 @@ text_cislo = input("Teď vyber číslo textu mezi 1 a 3: ")
 if text_cislo.isdigit():
     text_cislo = int(text_cislo)
     if 1 <= text_cislo <= 3:
-        text_vypis = TEXTS[text_cislo -1]
+        # 2 pokus - Vytvoření proměnné pro vybraný text
+        vybrany_text = TEXTS[text_cislo - 1]
         
 
         print(oddelovac)
         
-        
-        print("Vybraný text:\n"+ text_vypis)
+        # 2 pokus - proměnná vybrany_text 
+        print("Vybraný text:\n" + vybrany_text)
         
 
         print(oddelovac)

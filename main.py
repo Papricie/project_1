@@ -97,7 +97,6 @@ registrovani_uzivatele = {
 zadane_jmeno = input("Zadej uživatelské jméno: ")
 zadane_heslo = input("Zadej heslo: ")
 
-
 print(oddelovac)
 #------------------------------------------------------------------------------
 
@@ -111,7 +110,6 @@ else:
     print("Neregistrovaný uživatel, ukončuji program.")
     quit()
 
-
 print(oddelovac)
 #------------------------------------------------------------------------------
 
@@ -120,16 +118,16 @@ text_cislo = input("Teď vyber číslo textu mezi 1 a 3: ")
 if text_cislo.isdigit():
     text_cislo = int(text_cislo)
     if 1 <= text_cislo <= 3:
-        vybrany_text = TEXTS[text_cislo - 1] # 2 pokus - vytvoření proměnné pro vybraný text
+        vybrany_text = TEXTS[text_cislo - 1] # 2 pokus - vytvoření proměnné
         
         print(oddelovac)
         
-        print("Vybraný text:\n" + vybrany_text) # 2 pokus - proměnná vybrany_text 
+        print("Vybraný text:\n" + vybrany_text) # 2p - proměnná vybrany_text 
 
         print(oddelovac)
 #------------------------------------------------------------------------------
 
-# Analýza textu - 2 pokus nachystané proměnné pro interpunkci a hledané slova ve vybrany_text
+# Analýza textu - 2 pokus nachystané proměnné pro interpunkci a hledané slova
         interpunkce = ",.():?!*+-/="
         pocet_slov = 0
         psano_velkymi = 0
@@ -176,7 +174,8 @@ print(oddelovac)
 #------------------------------------------------------------------------------
 
 # Graf s délkou slov -  2 pokus použití proměnné interpunkce
-slova = [slovo.strip(interpunkce) for slovo in vybrany_text.split() if slovo.strip(interpunkce)]  
+slova = [slovo.strip(interpunkce) for slovo in vybrany_text.split() 
+         if slovo.strip(interpunkce)]  
 
 delky_slov = [len(slovo) for slovo in slova]
 

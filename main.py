@@ -6,7 +6,6 @@ author: Patricie Hermanová
 email: patriciehermanova@gmail.com
 """
 
-
 # ZADÁNÍ PROJEKTU
 
 # Analyzované texty
@@ -56,10 +55,6 @@ TEXTS = [
 +------+-------------+
 """
 
-# Oddělovač
-oddelovac = "-" * 50
-
-
 # UŽIVATELSKÝ VSTUP
 # A/ uživatel se přihlásí jménem a heslem
 # B/ vybere číslo mezi 1 a 3, pokud vybere číslo, které NENÍ V ZADÁNÍ, 
@@ -85,6 +80,8 @@ oddelovac = "-" * 50
 #10| ********* 9
 #11| ********** 10
 
+# Oddělovač
+oddelovac = "-" * 50
 
 ###################################### KÓD ####################################
 
@@ -118,7 +115,6 @@ else:
 print(oddelovac)
 #------------------------------------------------------------------------------
 
-
 # Výběr textu
 text_cislo = input("Teď vyber číslo textu mezi 1 a 3: ")
 if text_cislo.isdigit():
@@ -133,8 +129,7 @@ if text_cislo.isdigit():
         print(oddelovac)
 #------------------------------------------------------------------------------
 
-# Analýza textu    
-# 2 pokus - nachystané proměnné pro interpunkci a hledané slova ve vybrany_text
+# Analýza textu - 2 pokus nachystané proměnné pro interpunkci a hledané slova ve vybrany_text
         interpunkce = ",.():?!*+-/="
         pocet_slov = 0
         psano_velkymi = 0
@@ -161,14 +156,14 @@ if text_cislo.isdigit():
                 pocet_cisel += 1
                 suma_cisel += int(ciste)
 
-# Výsledky
+# Výsledky - 2 pokus vypsání s novými proměnnými
         print("Analýza textu:\n")
         print("Počet slov v textu:", pocet_slov)
         print("Počet slov začínající velkým písmenem:", zacinajici_velkym)
         print("Počet slov psáno velkými písmeny:", psano_velkymi)
         print("Počet slov psáno malými písmeny:", psano_malymi)
         print(f"Počet čísel: {pocet_cisel}")
-        print(f"Suma všech čísel: {suma_cisel}") # 2 pokus vypsání s novými proměnnými
+        print(f"Suma všech čísel: {suma_cisel}")
 
     else:
         print("Toto číslo rozhodně není mezi 1 a 3, ukončuji program")
@@ -177,13 +172,11 @@ else:
     print("Zadaný vstup rozhodně není číslo, ukončuji program")
     quit()
 
-
 print(oddelovac)
 #------------------------------------------------------------------------------
 
-
-# Graf s délkou slov
-slova = [slovo.strip(interpunkce) for slovo in vybrany_text.split() if slovo.strip(interpunkce)]
+# Graf s délkou slov -  2 pokus použití proměnné interpunkce
+slova = [slovo.strip(interpunkce) for slovo in vybrany_text.split() if slovo.strip(interpunkce)]  
 
 delky_slov = [len(slovo) for slovo in slova]
 
@@ -205,9 +198,7 @@ for delka, vyskyt in delky_pocet.items():
 print(oddelovac)
 #------------------------------------------------------------------------------
 
-
 print("Díky za vyzkoušení mého analyzátoru,", zadane_jmeno + "!")
-
 
 print(oddelovac)
 #------------------------------------------------------------------------------

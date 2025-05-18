@@ -124,66 +124,57 @@ text_cislo = input("Teď vyber číslo textu mezi 1 a 3: ")
 if text_cislo.isdigit():
     text_cislo = int(text_cislo)
     if 1 <= text_cislo <= 3:
-        # 2 pokus - Vytvoření proměnné pro vybraný text
-        vybrany_text = TEXTS[text_cislo - 1]
+        vybrany_text = TEXTS[text_cislo - 1] # 2 pokus - vytvoření proměnné pro vybraný text
         
-
         print(oddelovac)
         
-        # 2 pokus - proměnná vybrany_text 
-        print("Vybraný text:\n" + vybrany_text)
-        
+        print("Vybraný text:\n" + vybrany_text) # 2 pokus - proměnná vybrany_text 
 
         print(oddelovac)
 #------------------------------------------------------------------------------
 
- # Analýza textu       
-        pocet_slov = [slovo.strip(",.()") 
-                      for slovo in TEXTS[text_cislo -1].split() 
-                      if slovo.strip(",.()")]
-        
-        psano_velkymi = []
-        for slovo in TEXTS[text_cislo -1].split():
-            ciste = slovo.strip(",.()")
-            if ciste.isupper():
-                psano_velkymi.append(ciste)
-        
-        zacinajici_velkym = []
-        for slovo in TEXTS[text_cislo -1].split():
-            ciste = slovo.strip(",.()")
-            if ciste[0].isupper() and ciste.isalpha():
-                zacinajici_velkym.append(ciste)
-        
-        psano_malymi = []
-        for slovo in TEXTS[text_cislo -1].split():
-            ciste = slovo.strip(",.()")
-            if ciste.islower():
-                psano_malymi.append(ciste)
-        
+# Analýza textu    
+# 2 pokus - nachystané proměnné pro interpunkci a hledané slova ve vybrany_text
+        interpunkce = ",.():?!*+-/="
+        pocet_slov = 0
+        psano_velkymi = 0
+        zacinajici_velkym = 0
+        psano_malymi = 0
         pocet_cisel = 0
-        for slovo in TEXTS[text_cislo -1].split():
-            if slovo.isdigit():
-                pocet_cisel += 1
-        
         suma_cisel = 0
-        for slovo in TEXTS[text_cislo -1].split():
-            if slovo.isdigit():
-                suma_cisel += int(slovo)
+
+        for slovo in vybrany_text.split():
+            ciste = slovo.strip(interpunkce)
+            if not ciste:
+                continue
+
+            pocet_slov += 1
+
+            if ciste.isupper():
+                psano_velkymi += 1
+            elif ciste.islower():
+                psano_malymi +=1
+            elif ciste[0].isupper() and ciste.isalpha():
+                zacinajici_velkym += 1
+
+            if ciste.isdigit():
+                pocet_cisel += 1
+                suma_cisel += int(ciste)
 
 # Výsledky
         print("Analýza textu:\n")
-        print("Počet slov v textu:", len(pocet_slov))
-        print("Počet slov začínající velkým písmenem:", len(zacinajici_velkym))
-        print("Počet slov psáno velkými písmeny: ", len(psano_velkymi))
-        print("Počet slov psáno malými písmeny: ", len(psano_malymi))
+        print("Počet slov v textu:", pocet_slov)
+        print("Počet slov začínající velkým písmenem:", zacinajici_velkym)
+        print("Počet slov psáno velkými písmeny:", psano_velkymi)
+        print("Počet slov psáno malými písmeny:", psano_malymi)
         print(f"Počet čísel: {pocet_cisel}")
-        print(f"Suma všech čísel: {suma_cisel}")    
-    
+        print(f"Suma všech čísel: {suma_cisel}") # 2 pokus vypsání s novými proměnnými
+
     else:
         print("Toto číslo rozhodně není mezi 1 a 3, ukončuji program")
         quit()
 else:
-    print(str(text_cislo) + " rozhodně není číslo, ukončuji program")
+    print("Zadaný vstup rozhodně není číslo, ukončuji program")
     quit()
 
 

@@ -143,7 +143,7 @@ if text_cislo.isdigit():
         pocet_cisel = 0
         suma_cisel = 0
 
-        for slovo in vybrany_text.split():
+        for slovo in vybrany_text.split(): # 2 pokus jeden for cyklus
             ciste = slovo.strip(interpunkce)
             if not ciste:
                 continue
@@ -183,8 +183,7 @@ print(oddelovac)
 
 
 # Graf s délkou slov
-slova = [slovo.strip(",.()") for slovo in TEXTS[text_cislo - 1].split() 
-        if slovo.strip(",.()")]
+slova = [slovo.strip(interpunkce) for slovo in vybrany_text.split() if slovo.strip(interpunkce)]
 
 delky_slov = [len(slovo) for slovo in slova]
 

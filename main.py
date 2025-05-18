@@ -118,7 +118,7 @@ text_cislo = input("Teď vyber číslo textu mezi 1 a 3: ")
 if text_cislo.isdigit():
     text_cislo = int(text_cislo)
     if 1 <= text_cislo <= 3:
-        vybrany_text = TEXTS[text_cislo - 1] # 2 pokus - vytvoření proměnné
+        vybrany_text = TEXTS[text_cislo - 1] # 2 POKUS - vytvoření proměnné
         
         print(oddelovac)
         
@@ -127,8 +127,8 @@ if text_cislo.isdigit():
         print(oddelovac)
 #------------------------------------------------------------------------------
 
-# Analýza textu - 2 pokus nachystané proměnné pro interpunkci a hledané slova
-        interpunkce = ",.():?!*+-/="
+# Analýza textu - 2 pokus nachystané proměnné pro interpunkci a hledaná slova
+        interpunkce = ",.():?!*+-/=" # lepší čistění
         pocet_slov = 0
         psano_velkymi = 0
         zacinajici_velkym = 0
@@ -136,7 +136,7 @@ if text_cislo.isdigit():
         pocet_cisel = 0
         suma_cisel = 0
 
-        for slovo in vybrany_text.split(): # 2 pokus jeden for cyklus
+        for slovo in vybrany_text.split(): # 2p pouze jeden for cyklus
             ciste = slovo.strip(interpunkce)
             if not ciste:
                 continue
@@ -154,7 +154,7 @@ if text_cislo.isdigit():
                 pocet_cisel += 1
                 suma_cisel += int(ciste)
 
-# Výsledky - 2 pokus vypsání s novými proměnnými
+# Výsledky - 2p vypsání s novými proměnnými
         print("Analýza textu:\n")
         print("Počet slov v textu:", pocet_slov)
         print("Počet slov začínající velkým písmenem:", zacinajici_velkym)
@@ -173,7 +173,7 @@ else:
 print(oddelovac)
 #------------------------------------------------------------------------------
 
-# Graf s délkou slov -  2 pokus použití proměnné interpunkce
+# Graf s délkou slov - 2p použití proměnné interpunkce
 slova = [slovo.strip(interpunkce) for slovo in vybrany_text.split() 
          if slovo.strip(interpunkce)]  
 
